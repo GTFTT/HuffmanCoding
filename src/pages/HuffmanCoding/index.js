@@ -87,7 +87,7 @@ export default () => {
                 onChange={(e) => {
                     //Check pattern manually
                     const newText = String(e.target.value || "");
-                    const res = newText.replace(/[^A-Za-z0-9]/gi, '');;
+                    const res = newText.replace(/[^A-Za-z0-9 ]/gi, '');;
                     setText(res);
                 }}
             />
