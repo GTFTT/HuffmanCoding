@@ -1,11 +1,11 @@
 {
-  "name": "audio-point",
+  "name": "huffman-coding",
   "version": "0.1.0",
   "engines": {
     "node": "15.x"
   },
   "private": true,
-  "homepage": "https://GTFTT.github.io/AudioPoint/",
+  "homepage": "https://GTFTT.github.io/HuffmanCoding/",
   "dependencies": {
     "@fontsource/roboto": "^4.5.0",
     "@material-ui/core": "^4.12.3",
