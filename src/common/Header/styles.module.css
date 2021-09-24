@@ -1,0 +1,13 @@
+.mainCont {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 4em;
+}
+
+.title {
+    width: 85%;
+    padding: 0 2em;
+    border-bottom: 0.1em solid black;
+}
