@@ -20,4 +20,7 @@
 
 .graphCont {
     background-color: rgb(233, 233, 233);
+    padding-left: 2em;
+    max-height: 80vh;
+    overflow:auto;
 }
