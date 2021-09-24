@@ -1,7 +1,7 @@
 //vedor
 import React, { Component } from 'react';
 
-import { HuffmanCoding } from 'pages';
+import { AboutHuffman, HuffmanCoding } from 'components';
 import { Header, Footer } from 'common';
 
 import './App.css';
@@ -12,7 +12,8 @@ export default class App extends Component {
             <div>
                 <Header />
                 <div className={ "contentCont" }>
-                    <HuffmanCoding />
+                    <AboutHuffman />
+                    {/* <HuffmanCoding /> */}
                 </div>
                 <Footer />
             </div>

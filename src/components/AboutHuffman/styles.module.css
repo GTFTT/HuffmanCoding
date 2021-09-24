@@ -1,0 +1,17 @@
+.mainCont {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 4em;
+}
+
+.huffmanTreeImage {
+    height: 10em;
+}
+
+.text {
+    width: 50%;
+    padding: 0 1em;
+    width: auto;
+}
