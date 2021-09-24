@@ -1,4 +1,4 @@
-.mainCont {
+.infoCont {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -18,7 +18,14 @@
 }
 
 .text {
-    width: 50%;
     padding: 0 1em;
     width: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .infoCont {
+        display: flex;
+        flex-direction: column;
+        min-height: 4em;
+    }
 }

@@ -1,9 +1,16 @@
 .contentCont {
     margin: 0 auto;
     width: 85vw;
-    min-height: 150vh;
+    min-height: 120vh;
 }
 
 .contentCont > * {
     margin-bottom: 3em;
+}
+
+@media screen and (max-width: 700px) {
+    .contentCont {
+        min-height: 90vh;
+        width: 100vw;
+    }
 }

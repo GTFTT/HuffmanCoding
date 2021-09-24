@@ -9,7 +9,7 @@ function AboutHuffman() {
             <div className={Styles.title}>
                 About
             </div>
-            <div className={Styles.mainCont}>
+            <div className={Styles.infoCont}>
                 <div>
                     <img className={Styles.huffmanTreeImage} src={ HuffmanImage } alt="" />
                 </div>

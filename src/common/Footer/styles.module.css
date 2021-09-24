@@ -8,6 +8,7 @@
     background-color: black;
     color: white;
     font-size: 0.8em;
+    bottom: 0;
 }
 
 .copyright {
@@ -19,4 +20,10 @@
     height: 18px;
     width: 18px;
     padding: 0 0.8em;
+}
+
+@media screen and (max-width: 700px) {
+    .mainCont {
+        font-size: 0.5em;
+    }
 }
