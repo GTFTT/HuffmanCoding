@@ -8,16 +8,23 @@ import Styles from './styles.module.css';
  * "aaaoobbeencrteiv" - for testing
  */
 function generateCols(obj) {
-	const {a, b, count, character} = obj || {};
+	const {a, b, count, character, binCode} = obj || {};
 	if(!obj || !count) return null;
 
 	return (
 		<li>
-			<span>{ String(count) }</span>
+			<span>
+				{ String(count) }
+				{
+					binCode
+					? <h1 className={Styles.binCode}>{binCode}</h1>
+					: null
+				}
+			</span>
 			<ul>
 				{
 					!(a && b)
-						? <span>{ String(character || "") }</span>
+						? <span className={Styles.characterCont}>{ String(character || "") }</span>
 						: null
 				}
 				{generateCols(a)}

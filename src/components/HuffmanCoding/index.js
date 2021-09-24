@@ -57,8 +57,14 @@ function getGenerationArray(initialHuffmanArray) {
         const last = buffer.pop();
         const prevLast = buffer.pop();
         const newObj = {
-            a: prevLast,
-            b: last,
+            a: {
+                ...prevLast,
+                binCode: (prevLast.binCode || "") + "1"
+            },
+            b: {
+                ...last,
+                binCode: (prevLast.binCode || "") + "0"
+            },
             count: prevLast.count + last.count,
         };
 
