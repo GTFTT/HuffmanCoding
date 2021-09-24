@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { useState, useEffect } from 'react';
 
-// import Styles from './styles.module.css';
+import Styles from './styles.module.css';
 
 import GraphGenerator from './components/GraphGenerator';
 
@@ -81,18 +81,25 @@ export default () => {
 
     return (
         <div>
-            <input
-                type="text"
-                value={ text }
-                onChange={(e) => {
-                    //Check pattern manually
-                    const newText = String(e.target.value || "");
-                    const res = newText.replace(/[^A-Za-z0-9 ]/gi, '');;
-                    setText(res);
-                }}
-            />
-            <hr />
-            <GraphGenerator generationArray={ generationArray } />
+            <div className={Styles.title}>
+                Try it
+            </div>
+            <div className={ Styles.inputCont }>
+                <input
+                    type="text"
+                    value={ text }
+                    className={Styles.input}
+                    onChange={(e) => {
+                        //Check pattern manually
+                        const newText = String(e.target.value || "");
+                        const res = newText.replace(/[^A-Za-z0-9 ]/gi, '');;
+                        setText(res);
+                    }}
+                />
+            </div>
+            <div className={ Styles.graphCont }>
+                <GraphGenerator generationArray={ generationArray } />
+            </div>
         </div>
     );
 }

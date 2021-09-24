@@ -13,7 +13,7 @@ export default class App extends Component {
                 <Header />
                 <div className={ "contentCont" }>
                     <AboutHuffman />
-                    {/* <HuffmanCoding /> */}
+                    <HuffmanCoding />
                 </div>
                 <Footer />
             </div>
