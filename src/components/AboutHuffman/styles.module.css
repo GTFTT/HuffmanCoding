@@ -10,6 +10,13 @@
     height: 10em;
 }
 
+.title {
+    font-weight: bold;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+}
+
 .text {
     width: 50%;
     padding: 0 1em;
