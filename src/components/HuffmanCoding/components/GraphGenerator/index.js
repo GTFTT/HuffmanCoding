@@ -34,6 +34,10 @@ function generateCols(obj) {
 	);
 }
 
+/**
+ * This component generates graph based on supplied generationArray objects(it has tree structure and generation information)
+ * @param props.generationArray - specially structured generation array
+ */
 export default (props) => {
     const {
         generationArray,

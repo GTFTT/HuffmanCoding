@@ -3,6 +3,9 @@ import React from 'react';
 import Styles from './styles.module.css';
 import HuffmanImage from './images/HuffmanImage.png';
 
+/**
+ * Host information about Huffman algorithm
+ */
 function AboutHuffman() {
     return (
         <div>

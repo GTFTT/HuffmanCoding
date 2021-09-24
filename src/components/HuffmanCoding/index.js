@@ -6,7 +6,7 @@ import Styles from './styles.module.css';
 import GraphGenerator from './components/GraphGenerator';
 
 
-//Sort in descending order based on count
+/** Sort in descending order based on count */
 const comparatorObj = (a, b) => {
     if(a.count === b.count) return 0;
     if(a.count > b.count) return -1;
@@ -19,6 +19,10 @@ const comparator = (a, b, stats) => {
     return 1;
 }
 
+/**
+ * Convert string into initial array: [{character: '...', count: ...}, ...]
+ * @param {*} text - text to proceed
+ */
 const getInitialHuffmanArray = (text) => {
     if(!text || text === "") return [];
     const mapOfFrequency = {};
@@ -42,39 +46,40 @@ const getInitialHuffmanArray = (text) => {
     return initialHuffmanArray;
 }
 
+/**
+ * Get generation object required to build graph
+ * Generation object is a tree which contains information about what are child nodes and additional variables
+ * @param {*} initialHuffmanArray - Array of objects{character: '...', count: '...'}
+ */
 function getGenerationArray(initialHuffmanArray) {
     const buffer = initialHuffmanArray.map(val => val); //Create copy to prevent array from overwriting
-    const maxIter = 100; //Prevent infinity loop
-    let iterCount = 0;
 
-    while (buffer.length > 1 && iterCount < maxIter) {
-        iterCount++;
-
-        //sort in desc order
+    while (buffer.length > 1) {
         buffer.sort(comparatorObj);
 
         //Replace last two with a new one
         const last = buffer.pop();
         const prevLast = buffer.pop();
-        const newObj = {
+        //paste a new one
+        buffer.push({
             a: {
                 ...prevLast,
-                binCode: (prevLast.binCode || "") + "1"
+                binCode: "1"
             },
             b: {
                 ...last,
-                binCode: (prevLast.binCode || "") + "0"
+                binCode: "0"
             },
             count: prevLast.count + last.count,
-        };
-
-        //paste a new one
-        buffer.push(newObj);
+        });
     }
 
     return buffer;
 }
 
+/**
+ * Fully featured component to work with Huffman algorithm
+ */
 export default () => {
     const [text, setText] = useState("");
     const [generationArray, setGenerationArray] = useState([]);
