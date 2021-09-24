@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 import { HuffmanCoding } from 'pages';
-import { Header } from 'common';
+import { Header, Footer } from 'common';
 
 import './App.css';
 
@@ -14,6 +14,7 @@ export default class App extends Component {
                 <div className={ "contentCont" }>
                     <HuffmanCoding />
                 </div>
+                <Footer />
             </div>
         );
     }

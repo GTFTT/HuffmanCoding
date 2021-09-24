@@ -1,0 +1,22 @@
+.mainCont {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    min-height: 12em;
+    background-color: black;
+    color: white;
+    font-size: 0.8em;
+}
+
+.copyright {
+    font-size: 0.7em;
+    color: rgb(190, 190, 190);
+}
+
+.icon {
+    height: 18px;
+    width: 18px;
+    padding: 0 0.8em;
+}
