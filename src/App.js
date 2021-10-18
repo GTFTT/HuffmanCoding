@@ -19,7 +19,6 @@ export default class App extends Component {
     }
     
     render() {
-        console.log(this.state);
         return (
             <div>
                 <IntlProvider messages={this.state.lang==="uk"? messages.uk: messages.en} locale={this.state.lang} defaultLocale="uk">
@@ -34,7 +33,7 @@ export default class App extends Component {
                     <div className={ "contentCont" }>
                         {/* <Test /> */}
                         <AboutHuffman />
-                        <HuffmanCoding />
+                        <HuffmanCoding codesGenerated={console.log}/>
                     </div>
                     <Footer />
                 </IntlProvider>
