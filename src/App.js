@@ -1,21 +1,43 @@
 //vedor
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
-import { AboutHuffman, HuffmanCoding } from 'components';
+import { AboutHuffman, HuffmanCoding, Test } from 'components';
 import { Header, Footer } from 'common';
+import messages from './messages.js';
+import {IntlProvider} from 'react-intl';
+
 
 import './App.css';
 
 export default class App extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state= {
+            lang: "uk",
+        }
+    }
+    
     render() {
+        console.log(this.state);
         return (
             <div>
-                <Header />
-                <div className={ "contentCont" }>
-                    <AboutHuffman />
-                    <HuffmanCoding />
-                </div>
-                <Footer />
+                <IntlProvider messages={this.state.lang==="uk"? messages.uk: messages.en} locale={this.state.lang} defaultLocale="uk">
+                    <div>
+                        <input
+                            defaultChecked={true}
+                            type="checkbox"
+                            onChange={e => this.setState({lang: e.target.checked? "uk": "en"})}
+                        />
+                    </div>
+                    <Header />
+                    <div className={ "contentCont" }>
+                        {/* <Test /> */}
+                        <AboutHuffman />
+                        <HuffmanCoding />
+                    </div>
+                    <Footer />
+                </IntlProvider>
             </div>
         );
     }

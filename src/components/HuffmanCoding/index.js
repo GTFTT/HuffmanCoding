@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { useState, useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import Styles from './styles.module.css';
 
@@ -93,7 +94,7 @@ export default () => {
     return (
         <div>
             <div className={Styles.title}>
-                Try it
+                <FormattedMessage id="tryIt"/>
             </div>
             <div className={ Styles.inputCont }>
                 <input
