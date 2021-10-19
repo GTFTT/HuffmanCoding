@@ -36,7 +36,7 @@ export default function App() {
                     {/* <HuffmanCoding codesGenerated={val => console.log(val)}/> */} {/*In this case event loop isn.t caused as there isn't setState or something*/}
                     <HuffmanCoding huffmanTreeGenerated={ setHuffmanTree } /> {/* Important!!! Do not pass arrow function here, it will cause infinite rendering */}
                     <HuffmanTable generatedCodes={ generatedCodes }/> {/* Important!!! Do not pass arrow function here, it will cause infinite rendering */}
-                    <HuffmanDecoding generatedCodes={ generatedCodes }/>
+                    <HuffmanDecoding huffmanTree={ huffmanTree }/>
                 </div>
                 <Footer />
             </IntlProvider>
