@@ -6,29 +6,35 @@ import _ from 'lodash';
  * @returns new Map object with generated codes for each character
  */
 export const generateHuffmanCodes = (root) => {
-        const charsMap = new Map();
-        
-        function recursiveCodeBuilder(prevCode="", generationNode) {
-            if(!generationNode || _.isEmpty(generationNode)) {
-                //Do nothing if no object provided
-                return;
-            }
-
-            if(generationNode.character) {
-                //We finished
-                charsMap.set(generationNode.character, prevCode)
-                // console.log(generationNode.character, " - ", prevCode);
-            } else {
-                recursiveCodeBuilder(prevCode + generationNode.a.binCode, generationNode.a);
-                recursiveCodeBuilder(prevCode + generationNode.b.binCode, generationNode.b);
-            }
+    const charsMap = new Map();
+    
+    function recursiveCodeBuilder(prevCode="", generationNode) {
+        if(!generationNode || _.isEmpty(generationNode)) {
+            //Do nothing if no object provided
+            return;
         }
 
-        recursiveCodeBuilder("", root);
-        return charsMap;
+        if(generationNode.character) {
+            //We finished
+            charsMap.set(generationNode.character, prevCode)
+            // console.log(generationNode.character, " - ", prevCode);
+        } else {
+            recursiveCodeBuilder(prevCode + generationNode.a.binCode, generationNode.a);
+            recursiveCodeBuilder(prevCode + generationNode.b.binCode, generationNode.b);
+        }
+    }
+
+    recursiveCodeBuilder("", root);
+    return charsMap;
 
 };
 
+/**
+ * Take binary code and convert it back into normal text
+ * @param {*} fullBinCode 
+ * @param {*} huffmanTree 
+ * @returns 
+ */
 export const decodeBinCode = (fullBinCode, huffmanTree) => {
     if(!fullBinCode || !huffmanTree || _.isEmpty(huffmanTree)) {
         return "NOTHING";
@@ -61,5 +67,4 @@ export const decodeBinCode = (fullBinCode, huffmanTree) => {
     }
     
     return text;
-
 };
