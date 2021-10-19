@@ -1,7 +1,7 @@
 //vedor
 import React, { useState } from 'react';
 
-import { AboutHuffman, HuffmanCoding, HuffmanDecoding } from 'components';
+import { AboutHuffman, HuffmanCoding, HuffmanTable, HuffmanDecoding } from 'components';
 import { Header, Footer } from 'common';
 import messages from './messages.js';
 import {IntlProvider} from 'react-intl';
@@ -28,6 +28,7 @@ export default function App() {
                     <AboutHuffman />
                     {/* <HuffmanCoding codesGenerated={val => console.log(val)}/> */} {/*In this case event loop isn.t caused as there isn't setState or something*/}
                     <HuffmanCoding codesGenerated={ setGeneratedCodes }/> {/* Important!!! Do not pass arrow function here, it will cause infinite rendering */}
+                    <HuffmanTable generatedCodes={ generatedCodes }/> {/* Important!!! Do not pass arrow function here, it will cause infinite rendering */}
                     <HuffmanDecoding generatedCodes={ generatedCodes }/>
                 </div>
                 <Footer />
