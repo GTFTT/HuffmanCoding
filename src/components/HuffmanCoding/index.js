@@ -82,8 +82,9 @@ function getGenerationArray(initialHuffmanArray) {
  * Fully featured component to work with Huffman algorithm
  * 
  * @callback huffmanTreeGenerated(huffmanTree) - called when Huffman tree is generated from text
+ * @callback onTextEntered(text) - called when new text entered
  */
-export default ({ huffmanTreeGenerated }) => {
+export default ({ huffmanTreeGenerated, onTextEntered }) => {
     const [text, setText] = useState("");
     const [generationArray, setGenerationArray] = useState([]);
 
@@ -92,7 +93,8 @@ export default ({ huffmanTreeGenerated }) => {
         const generationTreeObject = getGenerationArray(initHuffmanArr);
         console.log();
         setGenerationArray(generationTreeObject);
-    }, [text]);
+        onTextEntered && onTextEntered(text);
+    }, [text, onTextEntered]);
 
     // Call callback to pass huffman tree value to parent component
     useEffect(() => {

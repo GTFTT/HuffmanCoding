@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
-import { generateHuffmanCodes, decodeBinCode } from 'utils';
+import { generateHuffmanCodes, decodeBinCode, generateBinCode } from 'utils';
 
 import Styles from './styles.module.css';
 
-const HuffmanDecoding = ({ huffmanTree }) => {
+const HuffmanDecoding = ({ huffmanTree, text }) => {
   const [fullBinCode, setFullBinCode] = useState("");
 
   useEffect(() => {
     let newBinCode = "";
     const generatedCodes = generateHuffmanCodes(huffmanTree);
-    for(let [ , binCode] of generatedCodes) {
-      newBinCode += binCode;
-    }
+    newBinCode = generateBinCode(generatedCodes, text);
     setFullBinCode(newBinCode);
-  }, [ huffmanTree ]);
+  }, [ huffmanTree, text ]);
 
   return (
     <div className={Styles.HuffmanDecoding}>

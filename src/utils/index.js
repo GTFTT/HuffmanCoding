@@ -68,3 +68,13 @@ export const decodeBinCode = (fullBinCode, huffmanTree) => {
     
     return text;
 };
+
+export const generateBinCode = (generatedCodes, text) => {
+    let newBinCode = "";
+    for(let ch of text) {
+        newBinCode += generatedCodes.get(ch);
+        //cc
+    }
+    
+    return newBinCode;
+};
