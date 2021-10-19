@@ -44,39 +44,3 @@ export default function App() {
         </div>
     );
 }
-
-// export default class App extends Component {
-//     constructor(props) {
-//         super(props);
-        
-//         this.state= {
-//             lang: "uk",
-//             generatedCodes: new Map(),
-//         }
-//     }
-    
-//     render() {
-//         return (
-//             <div>
-//                 <IntlProvider messages={this.state.lang==="uk"? messages.uk: messages.en} locale={this.state.lang} defaultLocale="uk">
-//                     <div>
-//                         <input
-//                             defaultChecked={true}
-//                             type="checkbox"
-//                             onChange={e => this.setState({lang: e.target.checked? "uk": "en"})}
-//                         />
-//                     </div>
-//                     <Header />
-//                     <div className={ "contentCont" }>
-//                         <AboutHuffman />
-//                         {/* <HuffmanCoding codesGenerated={val => console.log(val)}/> */}
-//                         {/* <HuffmanCoding codesGenerated={val => !_.isEqual(this.state.generatedC0des, val) && this.setState({generatedCodes: val})}/> */}
-//                         {/* <HuffmanDecoding generatedCodes={this.state.generatedCodes}/> */}
-//                     </div>
-//                     <Footer />
-//                 </IntlProvider>
-//             </div>
-//         );
-//     }
-// }
-
