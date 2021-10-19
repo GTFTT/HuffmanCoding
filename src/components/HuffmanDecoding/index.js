@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { generateHuffmanCodes } from 'utils';
+import { generateHuffmanCodes, decodeBinCode } from 'utils';
 
 import Styles from './styles.module.css';
 
@@ -21,6 +21,7 @@ const HuffmanDecoding = ({ huffmanTree }) => {
       <h2>Binary code</h2>
       <h3>{fullBinCode}</h3>
       <h2>Decoded value</h2>
+      {decodeBinCode(fullBinCode, huffmanTree)}
     </div>
   )
 };
