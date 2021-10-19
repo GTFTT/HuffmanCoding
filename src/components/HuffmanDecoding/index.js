@@ -18,8 +18,9 @@ const HuffmanDecoding = ({ huffmanTree }) => {
 
   return (
     <div className={Styles.HuffmanDecoding}>
-      <h2>Decoded value</h2>
+      <h2>Binary code</h2>
       <h3>{fullBinCode}</h3>
+      <h2>Decoded value</h2>
     </div>
   )
 };
