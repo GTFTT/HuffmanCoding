@@ -111,7 +111,7 @@ export default (props) => {
             if(generationNode.character) {
                 //We finished
                 charsMap.set(generationNode.character, prevCode)
-                console.log(generationNode.character, " - ", prevCode);
+                // console.log(generationNode.character, " - ", prevCode);
             } else {
                 recursiveCodeBuilder(prevCode + generationNode.a.binCode, generationNode.a);
                 recursiveCodeBuilder(prevCode + generationNode.b.binCode, generationNode.b);
