@@ -1,10 +1,11 @@
 //vedor
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {IntlProvider} from 'react-intl';
 
 import { AboutHuffman, HuffmanCoding, HuffmanTable, HuffmanDecoding } from 'components';
 import { Header, Footer } from 'common';
+import { generateHuffmanCodes } from 'utils';
 import messages from './messages.js';
-import {IntlProvider} from 'react-intl';
 
 
 import './App.css';
@@ -12,6 +13,12 @@ import './App.css';
 export default function App() {
     const [lang, setLang] = useState('uk');
     const [generatedCodes, setGeneratedCodes] = useState(new Map());
+    const [huffmanTree, setHuffmanTree] = useState({});
+
+    useEffect(() => {
+        const newCodes = generateHuffmanCodes(huffmanTree);
+        setGeneratedCodes(newCodes);
+    }, [huffmanTree]);
 
     return (
         <div>
@@ -27,7 +34,7 @@ export default function App() {
                 <div className={ "contentCont" }>
                     <AboutHuffman />
                     {/* <HuffmanCoding codesGenerated={val => console.log(val)}/> */} {/*In this case event loop isn.t caused as there isn't setState or something*/}
-                    <HuffmanCoding codesGenerated={ setGeneratedCodes }/> {/* Important!!! Do not pass arrow function here, it will cause infinite rendering */}
+                    <HuffmanCoding huffmanTreeGenerated={ setHuffmanTree } /> {/* Important!!! Do not pass arrow function here, it will cause infinite rendering */}
                     <HuffmanTable generatedCodes={ generatedCodes }/> {/* Important!!! Do not pass arrow function here, it will cause infinite rendering */}
                     <HuffmanDecoding generatedCodes={ generatedCodes }/>
                 </div>

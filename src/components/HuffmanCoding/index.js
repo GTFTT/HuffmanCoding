@@ -81,11 +81,9 @@ function getGenerationArray(initialHuffmanArray) {
 /**
  * Fully featured component to work with Huffman algorithm
  * 
- * @callback codesGenerated(mapOfCodes) - called when codes are generated from text
+ * @callback huffmanTreeGenerated(huffmanTree) - called when Huffman tree is generated from text
  */
-export default (props) => {
-    const { codesGenerated } = props;
-
+export default ({ huffmanTreeGenerated }) => {
     const [text, setText] = useState("");
     const [generationArray, setGenerationArray] = useState([]);
 
@@ -96,32 +94,11 @@ export default (props) => {
         setGenerationArray(generationTreeObject);
     }, [text]);
 
-    //Generate new table with characters codes using recursion
-    // Call callback to pass this value to parent component
+    // Call callback to pass huffman tree value to parent component
     useEffect(() => {
         const root = generationArray[0];
-        const charsMap = new Map();
-
-        function recursiveCodeBuilder(prevCode="", generationNode) {
-            if(!generationNode) {
-                //Do nothing if no object provided
-                return;
-            }
-
-            if(generationNode.character) {
-                //We finished
-                charsMap.set(generationNode.character, prevCode)
-                // console.log(generationNode.character, " - ", prevCode);
-            } else {
-                recursiveCodeBuilder(prevCode + generationNode.a.binCode, generationNode.a);
-                recursiveCodeBuilder(prevCode + generationNode.b.binCode, generationNode.b);
-            }
-        }
-
-        recursiveCodeBuilder("", root);
-
-        codesGenerated && codesGenerated(charsMap);
-    }, [generationArray, codesGenerated]);
+        huffmanTreeGenerated && huffmanTreeGenerated(root);
+    }, [generationArray, huffmanTreeGenerated]);
 
     return (
         <div>
