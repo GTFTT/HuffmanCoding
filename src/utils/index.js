@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  * Generate new Map with characters codes using recursion
  * @param {*} params.generationArray - Huffman tree object
@@ -5,9 +7,9 @@
  */
 export const generateHuffmanCodes = (root) => {
         const charsMap = new Map();
-
+        
         function recursiveCodeBuilder(prevCode="", generationNode) {
-            if(!generationNode) {
+            if(!generationNode || _.isEmpty(generationNode)) {
                 //Do nothing if no object provided
                 return;
             }
