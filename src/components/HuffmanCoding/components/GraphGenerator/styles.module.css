@@ -9,14 +9,15 @@
 
 .binCode {
     color: grey;
+    font-weight: bold;
+    text-decoration: underline;
     font-size: 0.5em;
     padding: 0 0.1em;
     height: 0.4em;
-    font-weight: lighter;
 }
 
 .tree {
-    transform: rotate(90deg);
+    /* transform: rotate(0deg); */
     transform-origin: 50%;
     display: inline-block;
     font-size: smaller;
@@ -89,7 +90,7 @@
     color: #333;
     position: relative;
     top: 1px;
-    transform: rotate(-90deg);
+    /* transform: rotate(-90deg); */
 }
 .tree li span:hover, .tree li span:hover + ul li span {
     background: #cea2a2;
