@@ -1,4 +1,7 @@
 import React from 'react';
+import _ from 'lodash';
+
+import Styles from './styles.module.css';
 
 import {
     insertControllingBits,
@@ -6,6 +9,14 @@ import {
     corruptBinCode,
     calculateCorruptedPosition,
 } from "utils";
+
+function generateBinCode(binCode) {
+    return <div>
+        {_.map(binCode, (ch) => {
+            return <span className={Styles.binCharacter}>{ch}</span>
+        })}
+    </div>
+}
 
 function index({binCode}) {
 
@@ -16,15 +27,12 @@ function index({binCode}) {
     //
 
     return (
-        <div>
+        <div className={Styles.mainCont}>
             <h2>Code corrupting</h2>
-            {binCode}
-            <br />
-            {binCodeWithControllingBits}
-            <br />
-            {binCodeWithCalculatedControllingBits}
-            <br />
-            {corruptedBinCode}
+            {generateBinCode(binCode)}
+            {generateBinCode(binCodeWithControllingBits)}
+            {generateBinCode(binCodeWithCalculatedControllingBits)}
+            {generateBinCode(corruptedBinCode)}
             <br />
             {/* {calculateCorruptedPosition(binCodeWithCalculatedControllingBits)} */}
             {/* {calculateCorruptedPosition(corruptedBinCode)} */}

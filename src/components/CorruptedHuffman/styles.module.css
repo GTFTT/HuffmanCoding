@@ -1,0 +1,12 @@
+.mainCont {
+    overflow: scroll;
+}
+
+.binCharacter {
+    display: inline-block;
+    width: 1.5em;
+    border: 0.1rem solid rgb(160, 160, 160);
+    background-color: aliceblue;
+    margin: 0.1rem 0.1rem 0.4rem 0.1rem;
+    text-align: center;
+}
