@@ -21,16 +21,39 @@ function setCharAt(str,index,chr) {
     return str.substring(0,index) + chr + str.substring(index+1);
 }
 
+function invertBitAt(str, index) {
+    let ch = str[index];
+    if(ch === "1") return setCharAt(str, index, "0");
+    if(ch === "0") return setCharAt(str, index, "1");
+    console.log("Bit not inverted, not a bit!!!");
+    return str;
+}
+
 /**
  * Corrupt provided bin code by inverting one bin code in each segment of provided length
  * @param {String} binCode - binary code
  * @param {*} offset -  Offset from start of a string to corrupt
  * @param {*} length - Lenght of a binCode block where bit will be corrupted
  */
-export function corruptBinCode(binCode, offset, segmentLength=8+4) {
+export function corruptBinCode(binCode, offset=0, segmentLength=8+4) {
+    let newBinCode = "";
+    for(let i = 0; i < binCode.length; i+=segmentLength) {
+        let segment = binCode.slice(i, i+segmentLength);
+        if(segment[i+offset]) {
+            segment = invertBitAt(segment, i+offset);
+        }
+        newBinCode += segment;
+    }
 
+    return newBinCode;
 }
 
+/**
+ * Insert characters where controlling bits have to be
+ * @param {*} binCode 
+ * @param {*} segmentLength 
+ * @returns 
+ */
 export function insertControllingBits(binCode, segmentLength=8) {
     let newBinCode = "";
 

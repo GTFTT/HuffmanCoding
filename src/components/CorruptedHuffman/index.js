@@ -1,16 +1,29 @@
 import React from 'react';
 
-import { insertControllingBits, recalculateControllingBits } from "utils";
+import {
+    insertControllingBits,
+    recalculateControllingBits,
+    corruptBinCode,
+} from "utils";
 
 function index({binCode}) {
+
+    const binCodeWithControllingBits = insertControllingBits(binCode);
+    const binCodeWithCalculatedControllingBits = recalculateControllingBits(binCodeWithControllingBits);
+    const corruptedBinCode = corruptBinCode(binCodeWithCalculatedControllingBits);
+
+    //
+
     return (
         <div>
             <h2>Code corrupting</h2>
             {binCode}
             <br />
-            {insertControllingBits(binCode)}
+            {binCodeWithControllingBits}
             <br />
-            {recalculateControllingBits(insertControllingBits(binCode))}
+            {binCodeWithCalculatedControllingBits}
+            <br />
+            {corruptedBinCode}
         </div>
     );
 }
