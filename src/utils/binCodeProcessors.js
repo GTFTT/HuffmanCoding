@@ -82,44 +82,52 @@ export function insertControllingBits(binCode, segmentLength=8) {
     return newBinCode;
 }
 
-function getControllingBit(segment, n, startIndex) {
+/**
+ * Calculate controling bit for specific position
+ * @param {*} segment - String of specific length to calculate bits 
+ * @param {*} n bit position(1, 2, 4, 8, 16...)
+ * @param {*} startIndex - offset for starting calculation
+ * @returns 
+ */
+function getControllingBit(segment, position) { //n, startIndex
+    //Calculate sum of bits(excluding controlling bits)
     function getSum(startIndex, endIndex) {
         let sum = 0;
         for(let i = startIndex; i < endIndex; i++) {
-            if(segment[i] === "1") sum++;
+            if(segment[i] === "1" && !powerOfTwo(i+1)) sum++;
         }
         return sum;
     }
 
     let segmentSum = 0;
 
-    for(let j = startIndex; j < segment.length; j+=n) {
-        segmentSum += getSum(j, j+n);
+    for(let j = position-1; j < segment.length; j+=position*2) {
+        segmentSum += getSum(j, j+position);
     }
 
-    return segmentSum%2
+    return segmentSum%2;
 }
 
-export function recalculateControllingBits(binCode, segmentLength=8) {
+export function recalculateControllingBits(binCode, segmentLength=8+4) {
     let newBinCode = "";
 
-    console.log("Bin code: ", binCode);
+    console.log("\n\nBin code: ", binCode);
 
-    for (let i = 0; i < binCode.length; i+=segmentLength + 4) {
-        let segment = "" + binCode.slice(i, i+segmentLength + 4);
+    for (let i = 0; i < binCode.length; i+=segmentLength) {
+        let segment = "" + binCode.slice(i, i+segmentLength);
         
         // console.log("Segment: ", segment, segment.length);
         // console.log("i, conBit: ", i, ", ", controllingBit);
         
         for(let j = 0; 2**j <= segment.length; j++) {
             // console.log("j: ", j, 2**j);
-            let controllingBit = getControllingBit(segment, j+1, j); 
-            console.log("Segment: ", segment);
-            console.log("controllingBit: ", controllingBit);
+            let controllingBit = getControllingBit(segment, 2**j); 
+            // console.log("controllingBit: ", controllingBit);
 
             // segment[2**j-1] = controllingBit; //Doesn't work
             // segment.replaceAt(2**j-1, controllingBit); // That either
             segment = setCharAt(segment, 2**j-1, controllingBit);
+            console.log("Segment: ", segment);
             // console.log("Character: ", segment[2**j-1]);
         }
         newBinCode += segment;
@@ -128,9 +136,13 @@ export function recalculateControllingBits(binCode, segmentLength=8) {
     return newBinCode;
 }
 
-export function calculateCorruptedPosition(corruptedBinCodeInitial, segmentLength=8+4) {
-    //Recalculate controlling bit by formula
-    //Find difference
-    //Add positions
-    //Return value
+export function calculateCorruptedPosition(corruptedBinCode, segmentLength=8+4) {
+    const recalculated = recalculateControllingBits(corruptedBinCode);
+    let position = 0;
+
+    for(let i = 0; 2**i <= corruptedBinCode.length; i++) {
+        // console.log(" ", recalculated, "\n ", corruptedBinCode);
+        if(recalculated[i] !== corruptedBinCode[i]) position += i;
+    }
+    return position;
 }

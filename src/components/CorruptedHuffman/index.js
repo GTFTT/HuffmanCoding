@@ -4,13 +4,14 @@ import {
     insertControllingBits,
     recalculateControllingBits,
     corruptBinCode,
+    calculateCorruptedPosition,
 } from "utils";
 
 function index({binCode}) {
 
     const binCodeWithControllingBits = insertControllingBits(binCode);
     const binCodeWithCalculatedControllingBits = recalculateControllingBits(binCodeWithControllingBits);
-    const corruptedBinCode = corruptBinCode(binCodeWithCalculatedControllingBits);
+    const corruptedBinCode = corruptBinCode(binCodeWithCalculatedControllingBits, 5);
 
     //
 
@@ -24,6 +25,9 @@ function index({binCode}) {
             {binCodeWithCalculatedControllingBits}
             <br />
             {corruptedBinCode}
+            <br />
+            {/* {calculateCorruptedPosition(binCodeWithCalculatedControllingBits)} */}
+            {/* {calculateCorruptedPosition(corruptedBinCode)} */}
         </div>
     );
 }
