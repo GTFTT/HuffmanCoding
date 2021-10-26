@@ -78,3 +78,5 @@ export const generateBinCode = (generatedCodes, text) => {
     
     return newBinCode;
 };
+
+export * from './binCodeProcessors';
