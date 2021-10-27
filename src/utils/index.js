@@ -42,7 +42,7 @@ export const decodeBinCode = (fullBinCode, huffmanTree) => {
     
     let text = "";
     let binCodeCopy = "" + fullBinCode;
-    const maxIterations = 200;
+    const maxIterations = 5000;
     let counter = 0;
 
     function getFirstCharacter(index, treeNode) {
@@ -73,7 +73,6 @@ export const generateBinCode = (generatedCodes, text) => {
     let newBinCode = "";
     for(let ch of text) {
         newBinCode += generatedCodes.get(ch);
-        //cc
     }
     
     return newBinCode;
