@@ -20,7 +20,7 @@ function setCharAt(str,index,chr) {
     return result;
 }
 
-function invertBitAt(str, index) {
+export function invertBitAt(str, index) {
     let ch = str[index];
     if(ch === "1") return setCharAt(str, index, "0");
     if(ch === "0") return setCharAt(str, index, "1");

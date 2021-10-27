@@ -7,7 +7,6 @@ import {
     insertControllingBits,
     recalculateControllingBits,
     corruptBinCode,
-    calculateCorruptedPosition,
     fixCorruptedBinCode,
 } from "utils";
 
