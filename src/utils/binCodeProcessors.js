@@ -1,5 +1,3 @@
-import { SizeOnlySource } from "webpack-sources";
-
 /**
  * Check if value is power of two
  * @param {*} x value
@@ -18,7 +16,8 @@ function powerOfTwo(x) {
  */
 function setCharAt(str,index,chr) {
     if(index > str.length-1) return str;
-    return str.substring(0,index) + chr + str.substring(index+1);
+    const result = str.substring(0,index) + chr + str.substring(index+1);
+    return result;
 }
 
 function invertBitAt(str, index) {
@@ -36,12 +35,14 @@ function invertBitAt(str, index) {
  * @param {*} length - Lenght of a binCode block where bit will be corrupted
  */
 export function corruptBinCode(binCode, offset=0, segmentLength=8+4) {
+    const parsedOffset = parseInt(offset); // VERI IMPORTANT, other types can corrupt result
     let newBinCode = "";
     for(let i = 0; i < binCode.length; i+=segmentLength) {
         let segment = binCode.slice(i, i+segmentLength);
-        if(segment[i+offset]) {
-            segment = invertBitAt(segment, i+offset);
+        if(segment[parsedOffset]) {
+            segment = invertBitAt(segment, parsedOffset);
         }
+
         newBinCode += segment;
     }
 
@@ -111,7 +112,7 @@ function getControllingBit(segment, position) { //n, startIndex
 export function recalculateControllingBits(binCode, segmentLength=8+4) {
     let newBinCode = "";
 
-    console.log("\n\nBin code: ", binCode);
+    // console.log("\n\nBin code: ", binCode);
 
     for (let i = 0; i < binCode.length; i+=segmentLength) {
         let segment = "" + binCode.slice(i, i+segmentLength);
@@ -127,7 +128,7 @@ export function recalculateControllingBits(binCode, segmentLength=8+4) {
             // segment[2**j-1] = controllingBit; //Doesn't work
             // segment.replaceAt(2**j-1, controllingBit); // That either
             segment = setCharAt(segment, 2**j-1, controllingBit);
-            console.log("Segment: ", segment);
+            // console.log("Segment: ", segment);
             // console.log("Character: ", segment[2**j-1]);
         }
         newBinCode += segment;
