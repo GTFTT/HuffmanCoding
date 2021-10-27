@@ -139,22 +139,39 @@ export function recalculateControllingBits(binCode, segmentLength=8+4) {
 
 /**
  * Calculate position of corrupted bit in one segment
- * @param {*} corruptedBinCode 
+ * @param {*} segment 
  * @param {*} segmentLength 
  * @returns position of corrupted bit (position is staring from 1, not 0 !!!)
  */
-export function calculateCorruptedPosition(corruptedBinCode, segmentLength=8+4) {
-    const recalculated = recalculateControllingBits(corruptedBinCode);
+export function calculateCorruptedPosition(segment, segmentLength=8+4) {
+    const recalculated = recalculateControllingBits(segment);
     let position = 0;
     // console.log("\n\nCor: ", corruptedBinCode);
     // console.log("Rec: ", recalculated);
 
-    for(let i = 0; 2**i <= corruptedBinCode.length; i++) {
-        if(recalculated[2**i-1] !== corruptedBinCode[2**i-1]) {
+    for(let i = 0; 2**i <= segment.length; i++) {
+        if(recalculated[2**i-1] !== segment[2**i-1]) {
             position += 2**i;
-            // console.log(2**i, " ");
         }
     }
     return position;
 }
 
+/**
+ * Fix corrupted bit in each segment
+ * @param {*} corruptedBinCode 
+ * @param {*} [segmentLength = 8+4] 
+ * @returns 
+ */
+export function fixCorruptedBinCode(corruptedBinCode, segmentLength=8+4) {
+    let newBinCode = "";
+
+    for(let i = 0; i <= corruptedBinCode.length; i+=segmentLength) {
+        let segment = corruptedBinCode.slice(i, i+segmentLength);
+        let position = calculateCorruptedPosition(segment);
+
+        newBinCode += invertBitAt(segment, position-1);
+    }
+
+    return newBinCode;
+}

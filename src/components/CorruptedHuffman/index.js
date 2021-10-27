@@ -8,6 +8,7 @@ import {
     recalculateControllingBits,
     corruptBinCode,
     calculateCorruptedPosition,
+    fixCorruptedBinCode,
 } from "utils";
 
 function generateBinCode(binCode) {
@@ -62,8 +63,9 @@ function CorruptedHuffman({binCode}) {
             {generateBinCode(binCodeWithCalculatedControllingBits)}
             {generateBinCode(corruptedBinCode)}
             <br />
-            {/* {calculateCorruptedPosition(binCodeWithCalculatedControllingBits)} */}
-            {calculateCorruptedPosition(corruptedBinCode)}
+            <h3>Fixed bits</h3>
+            {generateBinCode(fixCorruptedBinCode(corruptedBinCode))}
+            <br />
         </div>
     );
 }
