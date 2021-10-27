@@ -114,8 +114,9 @@ export default ({ huffmanTreeGenerated, onTextEntered }) => {
                     className={Styles.input}
                     onChange={(e) => {
                         //Check pattern manually
-                        const newText = String(e.target.value || "");
-                        const res = newText.replace(/[^A-Za-z0-9 ]/gi, '');;
+                        let newText = String(e.target.value || "");
+                        newText.toLowerCase();
+                        const res = newText.replace(/[^А-Яа-яA-Za-z0-9[]()"'!@#\$%_ ]/gi, '');
                         setText(res);
                     }}
                 />
