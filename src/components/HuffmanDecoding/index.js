@@ -17,10 +17,9 @@ const HuffmanDecoding = ({ huffmanTree, text }) => {
   return (
     <div className={Styles.HuffmanDecoding}>
       <h2>Binary code</h2>
-      <h3>{fullBinCode}</h3>
-      <h2>Decoded value</h2>
+      <h3>Decoded value</h3>
       {decodeBinCode(fullBinCode, huffmanTree)}
-      <h2>Corrupted decoded value(bin at position 0)</h2>
+      <h3>Corrupted decoded value(bin at position 0)</h3>
       {decodeBinCode(invertBitAt(fullBinCode, 0), huffmanTree)}
     </div>
   )
