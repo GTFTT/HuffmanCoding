@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/HuffmanCoding/static/css/main.4f008eab.chunk.css",
-    "main.js": "/HuffmanCoding/static/js/main.a21673a2.chunk.js",
-    "main.js.map": "/HuffmanCoding/static/js/main.a21673a2.chunk.js.map",
+    "main.css": "/HuffmanCoding/static/css/main.3946f82c.chunk.css",
+    "main.js": "/HuffmanCoding/static/js/main.52cc7f08.chunk.js",
+    "main.js.map": "/HuffmanCoding/static/js/main.52cc7f08.chunk.js.map",
     "runtime-main.js": "/HuffmanCoding/static/js/runtime-main.1f36128a.js",
     "runtime-main.js.map": "/HuffmanCoding/static/js/runtime-main.1f36128a.js.map",
-    "static/js/2.a2245460.chunk.js": "/HuffmanCoding/static/js/2.a2245460.chunk.js",
-    "static/js/2.a2245460.chunk.js.map": "/HuffmanCoding/static/js/2.a2245460.chunk.js.map",
+    "static/js/2.485c03e6.chunk.js": "/HuffmanCoding/static/js/2.485c03e6.chunk.js",
+    "static/js/2.485c03e6.chunk.js.map": "/HuffmanCoding/static/js/2.485c03e6.chunk.js.map",
     "index.html": "/HuffmanCoding/index.html",
-    "static/css/main.4f008eab.chunk.css.map": "/HuffmanCoding/static/css/main.4f008eab.chunk.css.map",
-    "static/js/2.a2245460.chunk.js.LICENSE.txt": "/HuffmanCoding/static/js/2.a2245460.chunk.js.LICENSE.txt",
+    "static/css/main.3946f82c.chunk.css.map": "/HuffmanCoding/static/css/main.3946f82c.chunk.css.map",
+    "static/js/2.485c03e6.chunk.js.LICENSE.txt": "/HuffmanCoding/static/js/2.485c03e6.chunk.js.LICENSE.txt",
     "static/media/HuffmanImage.3012007a.png": "/HuffmanCoding/static/media/HuffmanImage.3012007a.png"
   },
   "entrypoints": [
     "static/js/runtime-main.1f36128a.js",
-    "static/js/2.a2245460.chunk.js",
-    "static/css/main.4f008eab.chunk.css",
-    "static/js/main.a21673a2.chunk.js"
+    "static/js/2.485c03e6.chunk.js",
+    "static/css/main.3946f82c.chunk.css",
+    "static/js/main.52cc7f08.chunk.js"
   ]
 }
