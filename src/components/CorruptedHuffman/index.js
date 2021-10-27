@@ -63,7 +63,7 @@ function CorruptedHuffman({binCode}) {
             {generateBinCode(corruptedBinCode)}
             <br />
             {/* {calculateCorruptedPosition(binCodeWithCalculatedControllingBits)} */}
-            {/* {calculateCorruptedPosition(corruptedBinCode)} */}
+            {calculateCorruptedPosition(corruptedBinCode)}
         </div>
     );
 }

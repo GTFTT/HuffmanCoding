@@ -137,13 +137,24 @@ export function recalculateControllingBits(binCode, segmentLength=8+4) {
     return newBinCode;
 }
 
+/**
+ * Calculate position of corrupted bit in one segment
+ * @param {*} corruptedBinCode 
+ * @param {*} segmentLength 
+ * @returns position of corrupted bit (position is staring from 1, not 0 !!!)
+ */
 export function calculateCorruptedPosition(corruptedBinCode, segmentLength=8+4) {
     const recalculated = recalculateControllingBits(corruptedBinCode);
     let position = 0;
+    // console.log("\n\nCor: ", corruptedBinCode);
+    // console.log("Rec: ", recalculated);
 
     for(let i = 0; 2**i <= corruptedBinCode.length; i++) {
-        // console.log(" ", recalculated, "\n ", corruptedBinCode);
-        if(recalculated[i] !== corruptedBinCode[i]) position += i;
+        if(recalculated[2**i-1] !== corruptedBinCode[2**i-1]) {
+            position += 2**i;
+            // console.log(2**i, " ");
+        }
     }
     return position;
 }
+
