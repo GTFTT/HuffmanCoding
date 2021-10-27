@@ -24,6 +24,7 @@ function CorruptedHuffman({binCode}) {
     const [binCodeWithControllingBits, setBinCodeWithControllingBits] = useState("");
     const [binCodeWithCalculatedControllingBits, setBinCodeWithCalculatedControllingBits] = useState("");
     const [corruptedBinCode, setCorruptedBinCode] = useState("");
+    const [fixedBinCode, setFixedBinCode] = useState("");
 
     useEffect(() => {
         const newBinCodeWithControllingBits = insertControllingBits(binCode);
@@ -38,7 +39,9 @@ function CorruptedHuffman({binCode}) {
 
     useEffect(() => {
         const newCorruptedBinCode = corruptBinCode(binCodeWithCalculatedControllingBits, corruptingOffset);
+        const newFixedBinCode = fixCorruptedBinCode(newCorruptedBinCode);
         setCorruptedBinCode(newCorruptedBinCode);
+        setFixedBinCode(newFixedBinCode);
     }, [ corruptingOffset, binCodeWithCalculatedControllingBits ]);
     
     
@@ -64,7 +67,7 @@ function CorruptedHuffman({binCode}) {
             {generateBinCode(corruptedBinCode)}
             <br />
             <h3>Fixed bits</h3>
-            {generateBinCode(fixCorruptedBinCode(corruptedBinCode))}
+            {generateBinCode(fixedBinCode)}
             <br />
         </div>
     );
